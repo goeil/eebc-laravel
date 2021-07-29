@@ -40,7 +40,10 @@ class Edit extends Component
     public function mount(Article $article)
     {
         $this->article = $article;
-        $this->auteur = $article->auteur->id;
+        if ($article->auteur)
+        {
+            $this->auteur = $article->auteur->id;
+        }
 
         $this->auteurs = Auteur::all();
 

@@ -6,9 +6,11 @@
 @parent
     <div class="container">
         <h1 class="">Liste des messages</h6>
+        @auth
         <a href="{{ route('messages.edit') }}" class="btn btn-success">
              <i class="bi bi-file-plus"></i> Créer un message
         </a>
+        @endauth
 
         @if ($message = Session::get('success'))
           <div class="alert alert-success">

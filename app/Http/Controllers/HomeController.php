@@ -39,7 +39,7 @@ class HomeController extends Controller
             'slug' => 'titi',
             'titre' => 'Tous unis en Jésus-Christ'],
         ];
-        $evenements = Evenement::whereDate('horaire', '>', \Date::today())->orderBy('horaire','desc')->limit(5)->get();
+        $evenements = Evenement::whereDate('horaire', '>', \Date::today())->orderBy('horaire','asc')->limit(5)->get();
         $messages = Message::whereDate('date', '<', \Date::today())->orderBy('date','desc')->limit(3)->get()->reverse();
         return view('welcome', compact('evenements', 'messages'));
     }

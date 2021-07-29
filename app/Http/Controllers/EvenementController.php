@@ -12,7 +12,7 @@ class EvenementController extends Controller
 {
     public function index()
     {
-        $data['evenements'] = Evenement::orderBy('id','desc')->paginate(5);
+        $data['evenements'] = Evenement::orderBy('horaire','asc')->paginate(21);
         return view('evenements.index', $data);
     }
     public function form($id = null)

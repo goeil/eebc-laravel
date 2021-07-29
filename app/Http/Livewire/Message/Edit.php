@@ -45,7 +45,10 @@ class Edit extends Component
     public function mount(Message $message)
     {
         $this->message = $message;
-        $this->auteur = $message->auteur->id;
+        if ($message->auteur)
+        {
+            $this->auteur = $message->auteur->id;
+        }
         if ($message->livrebiblique)
         {
             $this->livrebiblique = $message->livrebiblique->id;

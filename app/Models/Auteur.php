@@ -23,4 +23,8 @@ class Auteur extends Model implements HasMedia
     {
         return $this->prenom . ' ' . $this->nom;
     }
+    public function abrege()
+    {
+        return $this->prenom[0] . '. ' . $this->nom;
+    }
 }

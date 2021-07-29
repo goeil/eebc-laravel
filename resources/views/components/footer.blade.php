@@ -39,6 +39,7 @@
             </ul>
           </div>
 
+{{--
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Vous abonner à notre lettre de nouvelles</h4>
             <p>Un e-mail chaque fois dans votre boite aux lettres</p>
@@ -46,7 +47,7 @@
               <input type="email" name="email"><input type="submit" value="S'inscrire">
             </form>
           </div>
-
+--}}
         </div>
       </div>
     </div>

@@ -86,7 +86,7 @@ class Edit extends Component
         {
             $etiq = Etiquette::whereNom($tag)->first();
             $this->evenement->etiquettes()->save($etiq);
-        }/*
+        }*/
         $this->evenement->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image

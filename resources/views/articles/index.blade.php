@@ -6,9 +6,11 @@
 @parent
     <div class="container">
         <h1 class="">Liste des articles</h6>
+        @auth
         <a href="{{ route('articles.edit') }}" class="btn btn-success">
              <i class="bi bi-file-plus"></i> Créer un article
         </a>
+        @endauth
 
         @if ($message = Session::get('success'))
           <div class="alert alert-success">

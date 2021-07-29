@@ -15,7 +15,6 @@ class DefaultSeeder extends Seeder
      */
     public function run()
     {
-        /*
         DB::table('lieu_evenements')->insert(
             [
               [
@@ -90,7 +89,7 @@ class DefaultSeeder extends Seeder
                 'nom'    => 'Membres',
               ],
             ]
-        );*/
+        );
         DB::table('livre_bibliques')->insert(
             [
               [

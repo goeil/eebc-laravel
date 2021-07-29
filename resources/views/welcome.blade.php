@@ -149,16 +149,22 @@ Nous cherchons à appliquer localement cette mission dans notre contexte.</p>
               <div class="row">
               @foreach ($messages as $message)
                 <div class="card col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                  <div class="card-header">
-                    <p>{{ $message['date'] }}</p>
+                  <div class="card-header text-center">
+                    <p>{{ Date::parse($message->date)->format('d F Y') }}</p>
                   </div>
                   <div class="icon-box mt-2 mt-xl-0 card-body">
                     {{--<i class="bi bi-file-play"></i>--}}
                     <h4>
                       <a class="" href="{{ route('object', ['slug' => $message->slug]) }}">
-                      {{ $message['titre'] }}
                   </a>
                     </h4>
+                      {{ $message['titre'] }}
+                      <p class="ts-1">
+                      @if ($message->livrebiblique())
+                          {{ $message->livrebiblique->abreviation }} {{ $message->reference }}
+                      @endif
+                      | {{ $message->auteur->abrege() }}
+                      </p>
                     <p>{{ $message->accroche() }}</p>
                   </div>
                   @if ($message->lien)
@@ -182,8 +188,8 @@ Nous cherchons à appliquer localement cette mission dans notre contexte.</p>
                 pouvez les retrouver ici, ou sur notre chaine Youtube.
               </p>
               <div class="text-center">
-                <a href="#" class="more-btn"><i class="bi bi-youtube fs-3"></i> Chaine Youtube</a>
-                <a href="#" class="more-btn"><i class="bi bi-collection-play fs-3"></i> Tous les messages</a>
+                <a href="https://www.youtube.com/channel/UCfwiLNIv3YYwaqASUsh2VIg" class="more-btn"><i class="bi bi-youtube fs-3"></i> Chaine Youtube</a>
+                <a href="{{ route('messages.index') }}" class="more-btn"><i class="bi bi-collection-play fs-3"></i> Tous les messages</a>
               </div>
             </div>
           </div>
