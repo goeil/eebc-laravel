@@ -1,2 +1,3 @@
-@extends('cms', ['titre_page' => 'Gestion des évènements'])
+@extends('layouts.page')
+@section('top-image', asset('images/agenda-top.png'))
 

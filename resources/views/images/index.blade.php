@@ -1,6 +1,9 @@
-@extends('evenements.layout')
+@extends('layouts.page')
+
+@section('title', 'Toutes les images')
 
 @section('content')
+@parent
             <div class="row">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible" role="alert">

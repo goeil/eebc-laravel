@@ -1,2 +1,38 @@
 $blue: #5d6efd;
 
+label {
+    font-weight: bold;
+}
+
+
+
+// Body
+$body-bg: #f8fafc;
+// Footer
+$footer-bg: #e8eaec;
+
+// Typography
+$font-family-sans-serif: 'Silka', sans-serif;
+$font-size-base: 1.1rem;
+$line-height-base: 1.6;
+
+// Colors
+//$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$green: #38c172;
+$cyan: #6cb2eb;
+
+// redéfinition couleurs connues en fonction des 3 couleurs EEBC
+$teal: #5fa19c;
+$yellow: #cc9e68;
+$orange: #e65c4d;
+$color1: $teal;
+$color2: $yellow;
+$color3: $orange;
+
+$primary: $color1;
+$secondary: $color2;
+$danger: $color3;

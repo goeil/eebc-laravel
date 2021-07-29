@@ -1,2 +1,17 @@
 @import "variables";
+@import "header";
+@import "home";
+@import "general";
+@import "~aos/dist/aos.css";
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+//@import "~remixicon/fonts/remixicon.css";
+
+@font-face {
+    font-family: Silka;
+    src: url('./fonts/silka-regular-webfont.eot') format ('eot'), // IE9 compat
+         url('./fonts/silka-regular-webfont.woff2') format ('woff2'), // Super modern browsers
+         url('./fonts/silka-regular-webfont.woff') format ('woff'), // Pretty modern browsers
+         url('./fonts/silka-regular-webfont.ttf') format ('truetype'); // Safari, Android, iOS…
+    font-display: swap;
+}

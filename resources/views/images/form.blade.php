@@ -1,4 +1,4 @@
-@extends('images.layout')
+@extends('layouts.cms')
 
 @section('content')
       <div class="row">
