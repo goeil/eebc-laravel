@@ -160,7 +160,7 @@ Nous cherchons à appliquer localement cette mission dans notre contexte.</p>
                     </h4>
                       {{ $message['titre'] }}
                       <p class="ts-1">
-                      @if ($message->livrebiblique())
+                      @if ($message->livrebiblique)
                           {{ $message->livrebiblique->abreviation }} {{ $message->reference }}
                       @endif
                       | {{ $message->auteur->abrege() }}
