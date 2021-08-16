@@ -14,8 +14,8 @@ class Liste extends Component
     protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        $search = '%' . strtolower($this->recherche) . '%';
-        $articles = Article::where('LOWER(titre)', 'like', $search)
+        $search = '%' . $this->recherche . '%';
+        $articles = Article::where('titre', 'like', $search)
             ->orderBy('debutpublication','desc')->paginate(10);
         return view('livewire.article.liste', ['articles' => $articles]);
     }
