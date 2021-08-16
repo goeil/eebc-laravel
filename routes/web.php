@@ -44,6 +44,9 @@ Route::get('articles/{id}',
 Route::get('articles', 
        [ArticleController::class, 'index'])
        ->name("articles.index");
+Route::get('articles/delete/{id}', 
+       [ArticleController::class, 'destroy'])
+       ->name("articles.delete");
 
 /* Messages */
 Route::get('messages/edit/{id?}', 

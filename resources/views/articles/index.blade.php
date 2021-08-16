@@ -18,32 +18,43 @@
           </div>
         @endif
 
-        <table border>
-          <th class="fw-bold">
-            <td class="fw-bold">Titre</td>
-            <td class="fw-bold">Sous-titre</td>
-            <td class="fw-bold">Auteur</td>
-            <td class="fw-bold">Publication</td>
-            <td class="fw-bold">Mort</td>
-            <td>&nbsp;</td>
-          </th>
+        <table class="table">
+          <thead>
+          <tr class="fw-bold">
+            <th scope="col">ID</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Sous-titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Publication</th>
+            <th scope="col">Mort</th>
+              @auth
+            <th scope="col">&nbsp;</th>
+              @endauth
+          </tr>
+          </thead>
           @foreach ($articles as $article)
+          <tbody>
             <tr>
-            <td>&nbsp;</td>
+              <th class="">{{ $article->id }}</th>
               <td><strong><a href="{{ route('object', ['slug' => $article->slug]) }}">
                  {{ $article->titre }}</a><strong></td>
               <td>{{ $article->soustitre }}</td>
-              <td>{{ $article->auteur->prenomNom() }}
-              <td>{{ Date::parse($article->debutpublication)->format('d F Y') }}
-              <td>{{ Date::parse($article->finpublication)->format('d F Y') }}
+              <td>{{ $article->auteur->prenomNom() }}</td>
+              <td>{{ Date::parse($article->debutpublication)->format('d F Y') }}</td>
+              <td>{{ Date::parse($article->finpublication)->format('d F Y') }}</td>
               @auth
               <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="{{ route('articles.edit', $article) }}" class="btn
-                           btn-primary"><i class="bi-pencil"></i></a>
+                           btn-primary btn-sm"><i class="bi-pencil"></i></a>
+                <a href="{{ route('articles.delete', $article) }}" class="btn
+                           btn-danger btn-sm"><i class="bi-x"></i></a>
+                </div>
               </td>
               @endauth
             </tr>
           @endforeach
+        </tbody>
         </table>
     </div>
 @endsection
