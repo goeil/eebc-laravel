@@ -49,8 +49,9 @@ class MessageController extends Controller
     * @param  \App\Message  $message
     * @return \Illuminate\Http\Response
     */
-    public function destroy(Message $message)
+    public function destroy($id)
     {
+        $message = Message::find($id);
         $titre = $message->titre;
         $message->delete();
         return redirect()->route('messages.index')

@@ -33,6 +33,9 @@ Route::get('evenements/{id}',
 Route::get('evenements', 
        [EvenementController::class, 'index'])
        ->name("evenements.index");
+Route::get('evenements/delete/{id}', 
+       [EvenementController::class, 'destroy'])
+       ->name("evenements.delete");
 
 /* Articles */
 Route::get('articles/edit/{id?}', 
@@ -58,6 +61,9 @@ Route::get('messages/{id}',
 Route::get('messages', 
        [MessageController::class, 'index'])
        ->name("messages.index");
+Route::get('messages/delete/{id}', 
+       [MessageController::class, 'destroy'])
+       ->name("messages.delete");
 
 
 Route::resource('images', ImageController::class);
