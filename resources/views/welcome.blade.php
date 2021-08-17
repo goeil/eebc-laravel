@@ -23,13 +23,13 @@
         <div class="d-flex justify-content-around flex-fill w-100">
 
           <div class="" data-aos="zoom-in" data-aos-delay="100">
-            <i class="bi bi-arrow-up-square-fill me-1"></i>Ce que nous croyons
+            <a href="#"><i class="bi bi-arrow-up-square-fill me-1"></i>Ce que nous croyons</a>
           </div>
           <div class="" data-aos="zoom-in" data-aos-delay="100">
-            <i class="bi bi-calendar2-fill me-1"></i>Agenda
+            <a href="{{ route('agenda') }} "><i class="bi bi-calendar2-fill me-1"></i>Agenda</a>
           </div>
           <div class="" data-aos="zoom-in" data-aos-delay="100">
-            <i class="bi bi-file-play-fill me-1"></i>Messages
+            <a href="{{ route('messages.index') }}"><i class="bi bi-file-play-fill me-1"></i>Messages</a>
           </div>
 
           {{--<div class="" data-aos="zoom-in" data-aos-delay="200">

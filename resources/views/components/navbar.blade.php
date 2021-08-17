@@ -20,7 +20,7 @@
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="{{ route('object', ['slug' => 'une-pause-pour-mieux-repartir']) }}">Au fil du temps</a></li>
             <li><a class="nav-link scrollto" href="{{ route('messages.index') }}">Messages</a></li>
-            <li><a class="nav-link scrollto" href="{{ route('evenements.index') }}">Agenda</a></li>
+            <li><a class="nav-link scrollto" href="{{ route('agenda') }}">Agenda</a></li>
             {{--<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
             <li><a class="nav-link scrollto" href="#team">Team</a></li>--}}
             {{--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
