@@ -28,6 +28,8 @@ class Edit extends Component
     public $lieux;
     public $organisateurs;
 
+    public $etiquettes;
+
     private function getSlugRule()
     {
         return new SlugRule($this->evenement->id, Evenement::class);
@@ -59,6 +61,16 @@ class Edit extends Component
         {
             $this->illustrationUrl = $evenement->getMedia('illustration')->first()->getUrl();
         }
+
+
+        $tableau = array();
+        foreach($evenement->etiquettes()->get() as $etiq)
+        {
+            $tableau[] = $etiq->nom;
+        }
+        $this->etiquettes = implode(', ', $tableau);
+
+
         //$this->adjustSlug(); //sinon écrase le slug !
         //$this->slugRule = new SlugRule($this->evenement->id, Evenement::class);
         //dd($this->slugRule);
@@ -81,12 +93,17 @@ class Edit extends Component
         $this->evenement->type()->associate($type);
         $this->evenement->organisateur()->associate($organisateur);
 
-        /* TODO tags here */
-        /*foreach(['vel', 'nisi'] as $tag)
+        /* Étiquettes */
+        // D'abord détacher toutes les étiquettes
+        $this->evenement->etiquettes()->detach();
+        foreach(explode(',', $this->etiquettes) as $tag)
         {
-            $etiq = Etiquette::whereNom($tag)->first();
+            $t = trim($tag);
+            $etiq = Etiquette::firstOrCreate([
+                'nom' => $t
+            ]);
             $this->evenement->etiquettes()->save($etiq);
-        }*/
+        }
         $this->evenement->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image
@@ -100,7 +117,7 @@ class Edit extends Component
                       ->toMediaCollection('illustration');
         }
 
-        return redirect()->to('/evenements');
+        return redirect()->route('object', ['slug' => $this->evenement->slug]);
     }
 
     public function validateSlug()

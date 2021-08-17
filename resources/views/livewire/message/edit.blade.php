@@ -139,6 +139,22 @@
         </div>
       </div>
 
+      <!-- Étiquettes -->
+      <div class="mb-3">
+        <label for="etiquettes" class="form-label">Étiquettes</label>
+        <div class="row">
+          <div class="">
+            <input type="text" name="titre" class="form-control" 
+            wire:model="etiquettes"
+            placeholder="Dieu, attachement, persévérance">
+            <div class="form-text">Étiquettes séparées par des virgules</div>
+            @error('message.etiquettes')
+              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+          </div>
+        </div>
+      </div>
+
 
       <div class="mb-3">
         <label for="illustration" class="form-label">Illustration</label>

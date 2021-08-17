@@ -8,7 +8,7 @@ class Util
     {
         echo "Hello $s, from Facade class.";
     }
-    public function slugify(string $s)
+    public function sansAccent(string $s)
     {
         $search =  array('Ê', 'É', 'È', 'Ë', 'ê', 'é', 'è', 'ë',
                          'Î', 'Ï', 'î', 'ï',
@@ -18,9 +18,15 @@ class Util
                          'i', 'i', 'i', 'i',
                          'a', 'o', 'a', 'o',
                          'u', 'c', 'u', 'c');
-        $str = str_ireplace($search, $replace, strtolower($s));
+        return str_ireplace($search, $replace, $s);
+    }
+    public function slugify(string $s)
+    {
+        $str = Util::sansAccent(strtolower($s));
         $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
         $str = str_replace(' ', '-', $str);
+        $str = str_replace('!', '', $str);
+        $str = str_replace('?', '', $str);
         $str = preg_replace('/\-{2,}/', '-', $str);
         return $str;
     }

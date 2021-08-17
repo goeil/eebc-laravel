@@ -8,6 +8,7 @@ use App\Rules\SlugRule;
 use App\Models\Message;
 use App\Models\Auteur;
 use App\Models\LivreBiblique;
+use App\Models\Etiquette;
 
 class Edit extends Component
 {
@@ -24,6 +25,8 @@ class Edit extends Component
     public $auteurs;
     public $livresbibliques;
 
+    public $etiquettes;
+
     private function getSlugRule()
     {
         return new SlugRule($this->message->id, Message::class);
@@ -39,6 +42,7 @@ class Edit extends Component
             'message.reference' => '',
             'message.duree'     => 'integer',
             'message.lien'     => 'string',
+            'etiquettes'     => 'string',
     ];
     public $titreComponent = "message edit form";
 
@@ -65,6 +69,14 @@ class Edit extends Component
         {
             $this->illustrationUrl = $message->getMedia('illustration')->first()->getUrl();
         }
+
+        $tableau = array();
+        foreach($message->etiquettes()->get() as $etiq)
+        {
+            $tableau[] = $etiq->nom;
+        }
+        $this->etiquettes = implode(', ', $tableau);
+
         //$this->adjustSlug(); //sinon écrase le slug !
     }
     public function render()
@@ -88,6 +100,20 @@ class Edit extends Component
             $livrebiblique = LivreBiblique::findOrFail($data['livrebiblique']);
             $this->message->livrebiblique()->associate($livrebiblique);
         }
+
+        /* Étiquettes */
+        // D'abord détacher toutes les étiquettes
+        $this->message->etiquettes()->detach();
+        foreach(explode(',', $this->etiquettes) as $tag)
+        {
+            $t = trim($tag);
+            $etiq = Etiquette::firstOrCreate([
+                'nom' => $t
+            ]);
+            $this->message->etiquettes()->save($etiq);
+        }
+
+
         $this->message->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image

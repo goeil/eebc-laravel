@@ -1,7 +1,6 @@
 <div class="container">
     <div class="d-flex align-items-center">
         <h2 class="flex-grow-1">Liste des évènements</h2>
-        @auth
           <div class="input-group mx-4 w-25">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
             <input type="text" class="form-control" 
@@ -11,8 +10,12 @@
                    aria-describedby="Recherche"/>
           </div>
 
+        @auth
         <a href="{{ route('evenements.edit') }}" class="btn btn-success btn-sm">
              <i class="bi bi-file-plus"></i> Créer
+        </a>
+        <a href="{{ route('agenda') }}" class="btn btn-secondary btn-sm">
+             <i class="bi bi-calendar-month"></i> Vue calendrier
         </a>
         @endauth
     </div>
@@ -25,7 +28,9 @@
         <table class="table table-striped">
           <thead>
           <tr class="fw-bold">
+            @auth
             <th scope="col">ID</th>
+            @endauth
             <th scope="col">Titre</th>
             <th scope="col">Horaire</th>
             <th scope="col">Type</th>
@@ -39,7 +44,9 @@
           <tbody>
           @foreach ($evenements as $evenement)
             <tr>
+              @auth
               <th class="">{{ $evenement->id }}</th>
+              @endauth
               <td><strong><a href="{{ route('object', ['slug' => $evenement->slug]) }}">
                  {{ $evenement->titre }}</a><strong></td>
 

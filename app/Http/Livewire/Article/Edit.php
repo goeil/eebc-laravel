@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use App\Rules\SlugRule;
 use App\Models\Article;
 use App\Models\Auteur;
+use App\Models\Etiquette;
 
 class Edit extends Component
 {
@@ -20,6 +21,8 @@ class Edit extends Component
     public $newIllustration; //type Livewire\TemporaryUploadedFile
     public $illustrationUrl; //type Livewire\TemporaryUploadedFile
     public $auteurs;
+
+    public $etiquettes;
 
     private function getSlugRule()
     {
@@ -51,6 +54,13 @@ class Edit extends Component
         {
             $this->illustrationUrl = $article->getMedia('illustration')->first()->getUrl();
         }
+
+        $tableau = array();
+        foreach($article->etiquettes()->get() as $etiq)
+        {
+            $tableau[] = $etiq->nom;
+        }
+        $this->etiquettes = implode(', ', $tableau);
         //$this->adjustSlug(); //sinon écrase le slug !
     }
     public function render()
@@ -65,6 +75,20 @@ class Edit extends Component
         // Ce code n'est pas exécuté si les règles ne sont pas validées ci-dessus.
         $auteur = Auteur::findOrFail($data['auteur']);
         $this->article->auteur()->associate($auteur);
+
+        /* Étiquettes */
+        // D'abord détacher toutes les étiquettes
+        $this->article->etiquettes()->detach();
+        foreach(explode(',', $this->etiquettes) as $tag)
+        {
+            $t = trim($tag);
+            $etiq = Etiquette::firstOrCreate([
+                'nom' => $t
+            ]);
+            $this->article->etiquettes()->save($etiq);
+        }
+
+
         $this->article->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image

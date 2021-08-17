@@ -11,7 +11,6 @@ Alpine.start()
 
 import AOS from 'aos'
 
-
 /**
 * Template Name: Bethany - v4.3.0
 * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/

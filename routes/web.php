@@ -23,47 +23,55 @@ Route::get('/hello', function() {
 });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
 
+Route::get('etiquettes/{tag?}', 
+       [App\Http\Controllers\EtiquetteController::class, 'liste'])
+       ->name("etiquette");
+
 /* Évènements */
+
 Route::get('evenements/edit/{id?}', 
        [EvenementController::class, 'form'])
        ->name("evenements.edit");
-Route::get('evenements/{id}', 
-       [EvenementController::class, 'show'])
-       ->name("evenements.show");
-Route::get('evenements', 
+Route::get('evenements/list', 
        [EvenementController::class, 'index'])
        ->name("evenements.index");
+Route::get('agenda', 
+       [EvenementController::class, 'agenda'])
+       ->name("agenda");
 Route::get('evenements/delete/{id}', 
        [EvenementController::class, 'destroy'])
        ->name("evenements.delete");
+Route::get('evenements/{id}', 
+       [EvenementController::class, 'show'])
+       ->name("evenements.show");
 
 /* Articles */
 Route::get('articles/edit/{id?}', 
        [ArticleController::class, 'form'])
        ->name("articles.edit");
-Route::get('articles/{id}', 
-       [ArticleController::class, 'show'])
-       ->name("articles.show");
-Route::get('articles', 
+Route::get('articles/list', 
        [ArticleController::class, 'index'])
        ->name("articles.index");
 Route::get('articles/delete/{id}', 
        [ArticleController::class, 'destroy'])
        ->name("articles.delete");
+Route::get('articles/{id}', 
+       [ArticleController::class, 'show'])
+       ->name("articles.show");
 
 /* Messages */
 Route::get('messages/edit/{id?}', 
        [MessageController::class, 'form'])
        ->name("messages.edit");
-Route::get('messages/{id}', 
-       [MessageController::class, 'show'])
-       ->name("messages.show");
-Route::get('messages', 
+Route::get('messages/list', 
        [MessageController::class, 'index'])
        ->name("messages.index");
 Route::get('messages/delete/{id}', 
        [MessageController::class, 'destroy'])
        ->name("messages.delete");
+Route::get('messages/{id}', 
+       [MessageController::class, 'show'])
+       ->name("messages.show");
 
 
 Route::resource('images', ImageController::class);

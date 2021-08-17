@@ -57,4 +57,13 @@ class EvenementController extends Controller
         return redirect()->route('evenements.index')
             ->with('success', "L'évènement {$titre} a été supprimé correctement.");
     }
+    /**
+    * Affiche l'agenda
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function agenda()
+    {
+        return view('evenements.calendrier');
+    } 
 }

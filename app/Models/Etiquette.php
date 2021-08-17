@@ -12,6 +12,9 @@ class Etiquette extends Model
 {
     use HasFactory;
 
+    // tous les champs sont fillable avec la ligne suivante
+    protected $guarded = [];
+
     public function articles()
     {
         return $this->morphedByMany(Article::class, 'taggable');
@@ -23,5 +26,9 @@ class Etiquette extends Model
     public function evenements()
     {
         return $this->morphedByMany(Evenement::class, 'taggable');
+    }
+    public function nomUrl()
+    {
+        return \Util::sansAccent($this->nom);
     }
 }

@@ -42,4 +42,10 @@ class Article extends Model implements HasMedia
     {
         return $this->morphToMany(Etiquette::class, 'taggable');
     }
+    public function accroche()
+    {
+        $parsedown = new \Parsedown();
+        $html = $parsedown->text($this->description);
+        return \Util::truncate_words(strip_tags($html), 15);
+    }
 }
