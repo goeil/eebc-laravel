@@ -1,5 +1,6 @@
 @extends('articles.layout')
 
+@section('title', $article->titre)
 @section('content')
 @parent
     <div class="container">

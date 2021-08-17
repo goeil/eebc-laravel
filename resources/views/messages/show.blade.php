@@ -1,5 +1,6 @@
 @extends('messages.layout')
 
+@section('title', $message->titre)
 @section('content')
 @parent
     <div class="container">

@@ -1,5 +1,6 @@
 @extends('evenements.layout')
 
+@section('title', $evenement->titre)
 @section('content')
 @parent
     <div class="container">
