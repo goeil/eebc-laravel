@@ -63,6 +63,10 @@ class Edit extends Component
         {
             $this->illustrationUrl = $evenement->getMedia('illustration')->first()->getUrl();
         }
+        if ($evenement->getMedia('attachments')->first())
+        {
+            $this->piecejointeUrl = $evenement->getMedia('attachments')->first()->getUrl();
+        }
 
 
         $tableau = array();

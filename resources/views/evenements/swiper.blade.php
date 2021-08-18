@@ -29,7 +29,7 @@
     <!-- Slides -->
     @foreach($objects as $object)
     <div class="swiper-slide h-auto">
-      <div class"card">
+      <div class="card p-4 h-100">
         <a class="" href="{{ route('object', ['slug' => $object->slug]) }}">
         <div class="d-flex flex-row g-3 justify-content-start align-items-center">
           <div class="">

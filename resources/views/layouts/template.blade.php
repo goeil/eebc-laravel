@@ -8,8 +8,25 @@
        </title>
        @livewireStyles
        <x-embed-styles />
+
+
+
+
+
+
+
     </head>
     <body class="">
+
+
+
+
+
+
+
+
+
+
 
         <header id="header" class="fixed-top d-flex align-items-center">
             <x-navbar />
@@ -48,6 +65,21 @@
 
        @livewireScripts
        <script src="{{ asset('js/app.js') }}" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        @yield('scripts')
     </body>
 </html>
