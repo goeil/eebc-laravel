@@ -4,7 +4,7 @@
 @section('content')
 @parent
 
-    <div class="container">
+    <div class="container-fluid">
 
       <div class="hero hero-article" class="d-flex align-items-center container-fluid"
       style="background: url('{{ $article->diapo() }}') center">
@@ -18,8 +18,6 @@
         </div>
       </div><!-- End Hero -->
     </div>
-
-
 
           @auth
           <!-- Boutons admin -->
@@ -35,7 +33,8 @@
           </div>
           @endauth
 
-
+  </div>
+  <div class="container">
 
       <div class="row mt-3">
         <div class="col-md-8">

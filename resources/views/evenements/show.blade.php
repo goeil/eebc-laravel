@@ -3,7 +3,7 @@
 @section('title', $evenement->titre)
 @section('content')
 @parent
-    <div class="container">
+    <div class="container-fluid">
       <div class="w-100 text-left">
           <a href="{{ route('agenda') }}" class="btn btn-secondary btn m-3 text-center">
               <i class="bi bi-calendar-month"></i> Retourner à l'agenda
@@ -30,6 +30,8 @@
           </div>
           </div>
           @endauth
+    </div>
+    <div class="container">
 
       <div class="row mt-3">
         <div class="col-md-8">

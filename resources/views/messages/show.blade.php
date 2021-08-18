@@ -3,7 +3,8 @@
 @section('title', $message->titre)
 @section('content')
 @parent
-    <div class="container">
+
+    <div class="container-fluid">
 
 
       <div class="hero hero-article" class="d-flex align-items-center container-fluid"
@@ -28,6 +29,9 @@
           </div>
           </div>
           @endauth
+
+  </div>
+  <div class="container">
 
       <div class="row mt-3">
         <div class="col-md-8">
