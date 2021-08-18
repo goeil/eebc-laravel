@@ -4,7 +4,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <img src="{{ asset('images/EEBC_noir.png') }}" class="mb-1" width="180">
+            <img src="{{ asset('img/EEBC_noir.png') }}" class="mb-1" width="180">
             <!--<h3 class="fs-5">Église évangélique baptiste de Court</h3>-->
             <p>
               Rue du Temple 13<br>

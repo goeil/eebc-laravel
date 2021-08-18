@@ -24,6 +24,8 @@ class Edit extends Component
 
     public $newIllustration; //type Livewire\TemporaryUploadedFile
     public $illustrationUrl; //type Livewire\TemporaryUploadedFile
+    public $newPiecejointe; //type Livewire\TemporaryUploadedFile
+    public $piecejointeUrl; //type Livewire\TemporaryUploadedFile
     public $types;
     public $lieux;
     public $organisateurs;
@@ -117,6 +119,18 @@ class Edit extends Component
                       ->toMediaCollection('illustration');
         }
 
+        /* Mettre à jour la collection de pièces jointes : vider puis ajouter la
+         * pièce jointe nouvellement postée 
+         * //TODO gérer plusieurs pièces jointes
+         */
+        if ($this->newPiecejointe)
+        {
+            $this->evenement->clearMediaCollection('attachments');
+            $this->evenement->addMedia($this->newPiecejointe->getRealPath())
+                      ->usingName($this->newPiecejointe->getClientOriginalName())
+                      ->toMediaCollection('attachments');
+        }
+
         return redirect()->route('object', ['slug' => $this->evenement->slug]);
     }
 
@@ -156,6 +170,12 @@ class Edit extends Component
     {
         $this->validate([
             'newIllustration' => 'image|max:1024',
+        ]);
+    }
+    public function updatedNewPiecejointe()
+    {
+        $this->validate([
+            'newPiecejointe' => '',
         ]);
     }
 }

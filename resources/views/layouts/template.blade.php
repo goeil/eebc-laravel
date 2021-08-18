@@ -18,7 +18,8 @@
 
         <main style="margin-top: 0px" 
             class="container-fluid p-0 pb-3 flex-grow-1 flex-column flex-sm-row">
-            @auth
+            {{--@auth--}}
+            @if (false)
                 <div class="row flex-grow-sm-1 flex-grow-0">
                     <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
                         <x-admin-bar />

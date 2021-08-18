@@ -10,7 +10,7 @@
     </h4>
     </div>
     @if ($evenement->getMedia('illustration')->first())
-    <img src="{{ evenementarticle->getMedia('illustration')->first()->getUrl('thumb') }}" class="m-0">
+    <img src="{{ $evenement->getMedia('illustration')->first()->getUrl('thumb') }}" class="m-0">
     @endif
 
 </div>

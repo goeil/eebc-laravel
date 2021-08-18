@@ -1,6 +1,6 @@
 @extends('layouts.cms')
 
-@section('top-image', asset('images/cms-top.png'))
+@section('top-image', asset('img/cms-top.png'))
 
 @section('title', 'CMS EEBC - Édition d\'un article')
 

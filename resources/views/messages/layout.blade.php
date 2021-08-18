@@ -1,3 +1,3 @@
 @extends('layouts.page')
-@section('top-image', asset('images/message-top.png'))
+@section('top-image', asset('img/message-top.png'))
 

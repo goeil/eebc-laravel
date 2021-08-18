@@ -4,25 +4,20 @@
 @section('content')
 @parent
     <div class="container">
-        @if ($message->getMedia('illustration')->first())
-        <div class="">
-          <img src="{{ $message->getMedia('illustration')->first()->getUrl('diapo') }}"
-               class="my-4">
+
+
+      <div class="hero hero-article" class="d-flex align-items-center container-fluid"
+      style="background: url('{{ $message->diapo() }}') center">
+        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="100" data-aos-duration="500">
+          <h1>{{ $message->titre }}</h1>
+          <h3>{{ $message->auteur->prenomNom() }} |
+          {{ Date::parse($message->date)->format('d F Y') }}</h3>
         </div>
-        @endif
-        <h1>{{ $message->titre }}</h1>
-        @if ($message->etiquettes()->count())
-        <p class="ms-4">Mots-clés :
-          @foreach($message->etiquettes()->get() as $t)
-            <a class="btn badge rounded-pill bg-primary text-white" 
-               href="{{ route('etiquette', $t->nomUrl()) }}">{{ $t->nom }}</a>
-          @endforeach
-        </p>
-        @endif
-
-
+      </div><!-- End Hero -->
 
           @auth
+          <!-- Boutons admin -->
+          <div class="w-100 text-center my-2">
           <div class="btn-group" role="group" aria-label="Basic example">
             <a href="{{ route('messages.index') }}" 
                class="btn btn-secondary btn-sm me-1">
@@ -31,26 +26,48 @@
             <a href="{{ route('messages.edit', $message) }}" class="btn
                            btn-primary btn-sm"><i class="bi-pencil"></i>Éditer</a>
           </div>
+          </div>
           @endauth
 
-        <p><small>Donné par : {{ $message->auteur->prenomNom() }}</small></p>
-        @if ($message->livrebiblique)
-        <p>Texte biblique : <span class="fw-bold">
-             {{ $message->livrebiblique->nom }} 
-             {{ $message->reference }}</span></p>
-        @endif
-        <p>Publié le : {{ Date::parse($message->date)->format('d F Y') }}</p>
-
-
-
-        @if ($message->lien)
+      <div class="row mt-3">
+        <div class="col-md-8">
+          @if ($message->lien)
             <x-embed url="{{ $message->lien }}" />
-        @endif
+          @endif
+          @if ($message->descriptionHtml)
+            <div class="p-3">{!! $message->descriptionHtml !!}</div>
+          @endif
+        </div>
+        <!-- Carte détails side -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">
+                <ul class="list-group">
+                  <li class="list-group-item">Message donné le 
+                      {{ Date::parse($message->date)->format('d F Y') }}</li>
+                  <li class="list-group-item">Délivré par {{ $message->auteur->prenomNom() }}
+                  </li>
 
+                    @if ($message->livrebiblique)
+                    <li class="list-group-item">Texte biblique : <span class="fw-bold">
+                        {{ $message->livrebiblique->nom }} 
+                        {{ $message->reference }}</span></li>
+                    @endif
 
-        @if ($message->descriptionHtml)
-          <div class="card p-3">{!! $message->descriptionHtml !!}</div>
-        @endif
+                  @if ($message->etiquettes()->count())
+                  <li class="list-group-item">
+                    @foreach($message->etiquettes()->get() as $t)
+                      <a class="btn badge rounded-pill bg-primary text-white" 
+                         href="{{ route('etiquette', $t->nomUrl()) }}">{{ $t->nom }}</a>
+                    @endforeach
+                  @endif
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 @endsection

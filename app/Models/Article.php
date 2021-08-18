@@ -30,8 +30,10 @@ class Article extends Model implements HasMedia
              ->fit(\Spatie\Image\Manipulations::FIT_FILL, 100, 100);
         $this->addMediaConversion('square')
              ->fit(\Spatie\Image\Manipulations::FIT_FILL, 300, 300);
-        $this->addMediaConversion('diapo')
+        $this->addMediaConversion('banner')
              ->fit(\Spatie\Image\Manipulations::FIT_CONTAIN, 800, 300);
+        $this->addMediaConversion('diapo')
+             ->fit(\Spatie\Image\Manipulations::FIT_CROP, 640, 480);
     }
     public function auteur()
     {
@@ -47,5 +49,15 @@ class Article extends Model implements HasMedia
         $parsedown = new \Parsedown();
         $html = $parsedown->text($this->description);
         return \Util::truncate_words(strip_tags($html), 15);
+    }
+    public function diapo(string $size = '')
+    {
+        if ($this->getMedia('illustration')->first())
+        {
+            return $this->getMedia('illustration')->first()->getUrl($size);
+        }
+        else
+        {
+        }
     }
 }

@@ -51,4 +51,14 @@ class Message extends Model implements HasMedia
         $html = $parsedown->text($this->description);
         return \Util::truncate_words(strip_tags($html), 15);
     }
+    public function diapo()
+    {
+        if ($this->getMedia('illustration')->first())
+        {
+            return $this->getMedia('illustration')->first()->getUrl();
+        }
+        else
+        {
+        }
+    }
 }

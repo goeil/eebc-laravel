@@ -4,10 +4,10 @@
 
 @section('content')
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center container-fluid"
-  style="background: url('{{ asset("images/hero-bg.jpg") }}') center center">
-    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1500">
-      <img src="{{ asset('images/EEBC_blanc.png') }}" 
+  <section class="hero" id="hero" class="d-flex align-items-center container-fluid"
+  style="background: url('{{ asset("img/hero-bg.jpg") }}') center center">
+    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="00" data-aos-duration="500">
+      <img src="{{ asset('img/EEBC_blanc.png') }}" 
          class="mb-5"
          width="380">
       <h2>Une communauté chrétienne dans le Jura bernois</h2>
@@ -17,7 +17,7 @@
   </section><!-- End Hero -->
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients mb-5">
+    <section id="clients" class="clients mb-2">
       <div class="container-fluid">
 
         <div class="d-flex justify-content-around flex-fill w-100">
@@ -41,6 +41,7 @@
       </div>
     </section><!-- End Clients Section -->
 
+    @include('evenements.swiper')
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about mt-5">
@@ -219,6 +220,7 @@ Nous cherchons à appliquer localement cette mission dans notre contexte.</p>
               </div>
             </div>
 
+            {{--
             <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -241,6 +243,7 @@ Nous cherchons à appliquer localement cette mission dans notre contexte.</p>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
+            --}}
           </div>
         </div>
 

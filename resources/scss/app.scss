@@ -1,11 +1,12 @@
 @import "variables";
-@import "header";
-@import "home";
-@import "general";
 @import "~aos/dist/aos.css";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "header";
+@import "home";
+@import "general";
 //@import "~remixicon/fonts/remixicon.css";
+@import '~swiper/swiper-bundle.css';
 
 @font-face {
     font-family: Silka;

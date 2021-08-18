@@ -41,6 +41,16 @@ class Evenement extends Model implements HasMedia
              ->fit(\Spatie\Image\Manipulations::FIT_CONTAIN, 800, 300);
     }
 
+    public function diapo()
+    {
+        if ($this->getMedia('illustration')->first())
+        {
+            return $this->getMedia('illustration')->first()->getUrl();
+        }
+        else
+        {
+        }
+    }
     public function organisateur()
     {
         return $this->belongsTo(OrganisateurEvenement::class);
