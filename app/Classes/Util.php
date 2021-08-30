@@ -23,8 +23,9 @@ class Util
     public function slugify(string $s)
     {
         $str = Util::sansAccent(strtolower($s));
+        $str = str_replace(' !', '', $str);
+        $str = str_replace(' ?', '', $str);
         $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
-        $str = str_replace(' [!?]', '', $str);
         $str = str_replace(' ', '-', $str);
         $str = str_replace('!', '', $str);
         $str = str_replace('?', '', $str);
