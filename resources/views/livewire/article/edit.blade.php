@@ -145,6 +145,38 @@
 
         </div>
       </div>
+      <div class="mb-3">
+        <label for="piecesjointes" class="form-label">Pièces jointes</label>
+
+        <div class="row">
+          <div class="col-md-8">
+            <input type="file" class="form-control" 
+            wire:model="newPiecejointe"
+            >
+            <div class="form-text">Fichier à téléverser
+            </div>
+            @error('newPiecejointe')
+              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+          </div>
+          <div class="col-md-4">
+            <ul class="list-group">
+              @if ($newPiecejointe)
+                <div wire:loading wire:target="newPiecejointe">Téléversement en cours…</div>
+                      <li class="list-group-item">
+                         {{ $newPiecejointe->getClientOriginalName() }}
+                         ({{ $newPiecejointe->getSize() }})
+                      </li>
+              @elseif ($piecejointeUrl)
+                      <li class="list-group-item">
+                         {{ $newPiecejointe }}
+                      </li>
+              @endif
+            </ul>
+          </div>
+
+        </div>
+      </div>
 
     <button type="submit" class="btn btn-primary">Sauvegarder</button>
   </form>

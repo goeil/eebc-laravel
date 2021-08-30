@@ -41,6 +41,23 @@
           @if ($message->descriptionHtml)
             <div class="p-3">{!! $message->descriptionHtml !!}</div>
           @endif
+
+          @if ($message->getMedia('attachments')->first())
+            @if ($message->getMedia('attachments')->first()->mime_type == "image/jpeg")
+            <h5 class="mt-3">Affiche</h5>
+            <img class="w-100"
+               src="{{ $message->getMedia('attachments')->first()->getUrl() }}">
+            @else
+            <h5 class="mt-3">À télécharger</h5>
+            <a class="btn btn-secondary"
+               href="{{ $message->getMedia('attachments')->first()->getUrl() }}">
+               {{ $message->getMedia('attachments')->first()->name }}
+               <small>({{ $message->getMedia('attachments')->first()->mime_type }})</small>
+            </a>
+            @endif
+          @endif
+
+
         </div>
         <!-- Carte détails side -->
         <div class="col-md-4">

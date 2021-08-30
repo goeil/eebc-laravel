@@ -20,6 +20,8 @@ class Edit extends Component
 
     public $newIllustration; //type Livewire\TemporaryUploadedFile
     public $illustrationUrl; //type Livewire\TemporaryUploadedFile
+    public $newPiecejointe; //type Livewire\TemporaryUploadedFile
+    public $piecejointeUrl; //type Livewire\TemporaryUploadedFile
     public $auteurs;
 
     public $etiquettes;
@@ -53,6 +55,10 @@ class Edit extends Component
         if ($article->getMedia('illustration')->first())
         {
             $this->illustrationUrl = $article->getMedia('illustration')->first()->getUrl();
+        }
+        if ($article->getMedia('attachments')->first())
+        {
+            $this->piecejointeUrl = $article->getMedia('attachments')->first()->getUrl();
         }
 
         $tableau = array();
@@ -101,6 +107,17 @@ class Edit extends Component
                       ->usingName($this->newIllustration->getClientOriginalName())
                       ->toMediaCollection('illustration');
         }
+        /* Mettre à jour la collection de pièces jointes : vider puis ajouter la
+         * pièce jointe nouvellement postée 
+         * //TODO gérer plusieurs pièces jointes
+         */
+        if ($this->newPiecejointe)
+        {
+            $this->article->clearMediaCollection('attachments');
+            $this->article->addMedia($this->newPiecejointe->getRealPath())
+                      ->usingName($this->newPiecejointe->getClientOriginalName())
+                      ->toMediaCollection('attachments');
+        }
 
         return redirect()->route('object', ['slug' => $this->article->slug]);
     }
@@ -122,6 +139,12 @@ class Edit extends Component
     {
         $this->validate([
             'newIllustration' => 'image|max:1024',
+        ]);
+    }
+    public function updatedNewPiecejointe()
+    {
+        $this->validate([
+            'newPiecejointe' => '',
         ]);
     }
 }
