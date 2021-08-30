@@ -24,6 +24,7 @@ class Util
     {
         $str = Util::sansAccent(strtolower($s));
         $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
+        $str = str_replace(' [!?]', '', $str);
         $str = str_replace(' ', '-', $str);
         $str = str_replace('!', '', $str);
         $str = str_replace('?', '', $str);
