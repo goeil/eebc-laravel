@@ -101,6 +101,9 @@ class Edit extends Component
             $this->message->livrebiblique()->associate($livrebiblique);
         }
 
+
+        $this->message->save();
+
         /* Étiquettes */
         // D'abord détacher toutes les étiquettes
         $this->message->etiquettes()->detach();
@@ -113,8 +116,6 @@ class Edit extends Component
             $this->message->etiquettes()->save($etiq);
         }
 
-
-        $this->message->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image
          * nouvellement postée 

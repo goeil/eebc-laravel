@@ -99,6 +99,8 @@ class Edit extends Component
         $this->evenement->type()->associate($type);
         $this->evenement->organisateur()->associate($organisateur);
 
+        $this->evenement->save();
+
         /* Étiquettes */
         // D'abord détacher toutes les étiquettes
         $this->evenement->etiquettes()->detach();
@@ -110,7 +112,6 @@ class Edit extends Component
             ]);
             $this->evenement->etiquettes()->save($etiq);
         }
-        $this->evenement->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image
          * nouvellement postée 

@@ -76,6 +76,8 @@ class Edit extends Component
         $auteur = Auteur::findOrFail($data['auteur']);
         $this->article->auteur()->associate($auteur);
 
+        $this->article->save();
+
         /* Étiquettes */
         // D'abord détacher toutes les étiquettes
         $this->article->etiquettes()->detach();
@@ -88,8 +90,6 @@ class Edit extends Component
             $this->article->etiquettes()->save($etiq);
         }
 
-
-        $this->article->save();
 
         /* Mettre à jour la collection d'image : vider puis ajouter l'image
          * nouvellement postée 
