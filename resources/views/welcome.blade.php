@@ -16,6 +16,8 @@
     </div>
   </section><!-- End Hero -->
 
+    @include('banner')
+
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients mb-2">
       <div class="container-fluid">

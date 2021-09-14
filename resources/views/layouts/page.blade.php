@@ -1,6 +1,8 @@
 @extends('layouts.template')
 @section('title', 'Voici une page')
 
+
+
 @section('content')
 
 @hasSection('top-image')
@@ -8,5 +10,7 @@
 @else
   <div style="height: 180px; bg-color: white">&nbsp;</div>
 @endif
+
+    @include('banner')
 
 @endsection
