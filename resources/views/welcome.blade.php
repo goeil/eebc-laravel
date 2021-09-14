@@ -8,7 +8,7 @@
   style="background: url('{{ asset("img/hero-bg.jpg") }}') center center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="00" data-aos-duration="500">
       <img src="{{ asset('img/EEBC_blanc.png') }}" 
-         class="mb-5"
+         class="mb-5 logo-hero"
          width="380">
       <h2>Une communauté chrétienne dans le Jura bernois</h2>
       <a href="#about" class="btn-scroll scrollto" style="position:absolute"

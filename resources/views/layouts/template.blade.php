@@ -10,28 +10,14 @@
        <x-embed-styles />
 
 
-
-
-
-
-
     </head>
     <body class="">
-
-
-
-
-
-
-
-
 
 
 
         <header id="header" class="fixed-top d-flex align-items-center">
             <x-navbar />
         </header><!-- End Header -->
-
 
         <main style="margin-top: 0px" 
             class="container-fluid p-0 pb-3 flex-grow-1 flex-column flex-sm-row">

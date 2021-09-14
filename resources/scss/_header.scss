@@ -282,6 +282,16 @@
   }
 }
 
+/* Image top */
+.top-image {
+  margin-bottom: 45px; // change en fonction du bandeau
+}
+@media (max-width: 768px) {
+  .top-image {
+    margin-bottom: 80px; // change en fonction du bandeau
+  }
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
