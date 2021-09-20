@@ -39,8 +39,7 @@ class MessageController extends Controller
     public function show($id)
     {
         $message = Message::find($id);
-        $parsedown = new \Parsedown();
-        $message->descriptionHtml = $parsedown->text($message->description);
+        $message->descriptionHtml = \Util::transformMarkdown($message->description);
         return view('messages.show', compact('message'));
     } 
     /**

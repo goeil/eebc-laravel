@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Classes;
+
+use App\Models\Message;
+use App\Models\Article;
+use App\Models\Evenement;
  
 class Util
 {
@@ -48,4 +52,56 @@ class Util
         return $text;
     }
 
+    function transformMarkdown($texte)
+    {
+        $parsedown = new \Parsedown();
+        // Conversion Markdown avec l'outil Parsedown
+        $texte = $parsedown->text($texte);
+
+        // Code maison ajouté ensuite
+        $texte = preg_replace('/((@carte-[^-]*-\d-?.*@[[:space:]]*){2,})/',
+            '<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 align-items-center">$1</div>', $texte);
+        $texte = preg_replace_callback('|@(carte-[^-]*-\d-?.*)@|',
+            function ($matches)
+            {
+                foreach ($matches as $match)
+                {
+                    $string = explode("-", substr($match, 0, -1));
+                    $objectClass = $string[1];
+                    $objectId = $string[2];
+                    $params = (isset ($string[3])) ? $string[3] : '';
+                    $object = null;
+
+                    $s = "<div class='card m-2' style=''>";
+                    switch($objectClass)
+                    {
+                    case "message":
+                        $object = Message::find($objectId);
+                        if (!is_null($object))
+                            $s .= view('components.message-card', 
+                                  ['message' => $object]);
+                        break;
+                        
+                    case "evenement":
+                        $object = Evenement::find($objectId);
+                        if (!is_null($object))
+                            $s .= view('components.evenement-card', 
+                                  ['evenement' => $object]);
+                        break;
+
+                    case "article":
+                        $object = Article::find($objectId);
+                        if (!is_null($object))
+                            $s .= view('components.article-card', 
+                                  ['article' => $object]);
+                        break;
+                    }
+                    $s .= "</div>";
+                    return $s;
+                }
+            }, $texte);
+
+        return $texte;
+
+    }
 }

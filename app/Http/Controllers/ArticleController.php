@@ -36,8 +36,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
-        $parsedown = new \Parsedown();
-        $article->articleHtml = $parsedown->text($article->article);
+        $article->articleHtml = \Util::transformMarkdown($article->article);
         return view('articles.show', compact('article'));
     } 
     /**
