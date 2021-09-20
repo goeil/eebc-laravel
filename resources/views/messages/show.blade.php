@@ -67,6 +67,8 @@
                 <ul class="list-group">
                   <li class="list-group-item">Message donné le 
                       {{ Date::parse($message->date)->format('d F Y') }}</li>
+                  <li class="list-group-item"><i class="bi bi-stopwatch"></i> 
+                      {{ $message->duree }} min</li>
                   <li class="list-group-item">Délivré par {{ $message->auteur->prenomNom() }}
                   </li>
 
@@ -79,7 +81,7 @@
                   @if ($message->etiquettes()->count())
                   <li class="list-group-item">
                     @foreach($message->etiquettes()->get() as $t)
-                      <a class="btn badge rounded-pill bg-primary text-white" 
+                      <a class="btn badge mb-1 rounded-pill bg-primary text-white" 
                          href="{{ route('etiquette', $t->nomUrl()) }}">{{ $t->nom }}</a>
                     @endforeach
                   @endif
