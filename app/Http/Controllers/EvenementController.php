@@ -40,8 +40,7 @@ class EvenementController extends Controller
     public function show($id)
     {
         $evenement = Evenement::find($id);
-        $parsedown = new \Parsedown();
-        $evenement->descriptionHtml = $parsedown->text($evenement->description);
+        $evenement->descriptionHtml = \Util::transformMarkdown($evenement->description);
         return view('evenements.show', compact('evenement'));
     } 
     /**
